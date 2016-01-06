@@ -7,12 +7,8 @@
 char FAIL[] = "TRY AGAIN!";
 char SUCESSED[] = "SUCESSED! YOU GOT IT.";
 
-int Rahab(bool passIt) {
-	return (passIt ? 0x0a0a0a0a : *(unsigned int*)(0x7FFE0320));
-}
-
 void showResult(int pass) {
-	printf("%s\n", (pass ^ 0x0a0a0a0a) ? FAIL : SUCESSED);
+	printf("%s\n", (pass ^ 0x0a) ? FAIL : SUCESSED);
 }
 
 int main() {
@@ -22,8 +18,8 @@ int main() {
 		fscanf(fInput, "%s", tmpBuff);
 		printf("%s\n",tmpBuff);
 	}
-	int magic = Rahab(false);
-	printf("Rahab's number:%i\n", magic);
+	int magic = *(unsigned int*)(0x7FFE0320);
+	printf("magic number:%i\n", magic);
 	showResult(magic);
 	return 0;
 }
